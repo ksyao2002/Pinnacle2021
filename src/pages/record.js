@@ -8,8 +8,10 @@ import Webcam from "react-webcam";
 import * as window from "@mediapipe/drawing_utils"
 
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import firebaseApp from "../init-firebase";
+//import { getFirestore } from 'firebase/firestore/lite';
+import {db} from "../init-firebase";
+import firebase from 'firebase/app'
+//import { collection, doc, setDoc } from "firebase/firestore"; 
 
 
 
@@ -27,8 +29,8 @@ function Record() {
   const stateRefLandmarks = useRef([]);
   stateRef.current = capturing;
   stateRefLandmarks.current = landmarkPos;
-  //const db = getFirestore(firebaseApp);
-  //const ref = db.collection("Users");
+  //const db = firebaseApp.firestore();
+  
   
 
   const handleStartCaptureClick = React.useCallback(() => {
@@ -86,6 +88,22 @@ function Record() {
       }
       //vel[i-1] = tmp;
     }
+var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var test = firebase.firestore.Timestamp.fromDate(new Date());
+console.log(test);
+var dateTime = date+' '+time;
+    const ref = db.collection("Users").add({
+      Name: 'Kevin',
+      Time: test,
+      LArm: vel[14],
+      RArm: vel[13],
+      LLeg: vel[26],
+      RLeg: vel[25]
+    }).then(ref1 => {
+      console.log('document ID: ', ref1.id);
+    });
 
     //pass landmarks 13, 14, 25, and 26 to server
     //only if visibility is above 0.99 we will analyze. Otherwise, movement is set to zero
