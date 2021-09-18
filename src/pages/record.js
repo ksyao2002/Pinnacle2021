@@ -91,9 +91,10 @@ function Record() {
 var today = new Date();
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+var dateTime = date+' '+time;
 var test = firebase.firestore.Timestamp.fromDate(new Date());
 console.log(test);
-var dateTime = date+' '+time;
     const ref = db.collection("Users").add({
       Name: 'Kevin',
       Time: test,
