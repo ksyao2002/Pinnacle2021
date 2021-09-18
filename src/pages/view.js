@@ -72,6 +72,7 @@ var dateTime = date+' '+time;
   console.log(new Date().getTime()-3600000);
   return (
     <div>
+      <h1>Left arm activity</h1>
       <Plot data={[
                     {
                         x: xDat,
@@ -131,11 +132,11 @@ var dateTime = date+' '+time;
 
             />
 
-
+<h1>Right arm activity</h1>
             <Plot data={[
                     {
                         x: xDat,
-                        y: y1,
+                        y: y2,
                         type: 'scatter',
                         mode: 'lines+markers',
                         marker: {color: 'rgb(99, 102, 241)', size: 4},
@@ -155,7 +156,7 @@ var dateTime = date+' '+time;
                     }},
                     yaxis: {
                         title: 'Number of Hours',
-                        range: [0,Math.max(goal, ...y1)*1.1],
+                        range: [0,Math.max(goal, ...y2)*1.1],
                         titlefont: {
                         family: 'Inter, sans-serif',
                         size: 18,
@@ -167,7 +168,129 @@ var dateTime = date+' '+time;
                             x0: 0,
                             y0: goal,
                             x1: xDat.length,
-                            y1: Math.max(goal, ...y1)*1.1,
+                            y1: Math.max(goal, ...y2)*1.1,
+                            fillcolor: 'green',
+                            opacity: 0.1,
+                            line: {width: 0}
+                        },
+                        {
+                            type: 'line',
+                            x0: 0,
+                            y0: goal,
+                            x1: xDat.length,
+                            y1: goal,
+                            line: {
+                                color: 'green',
+                                width: 0.5
+                            }
+                        }
+                    ]
+
+                }}
+                useResizeHandler
+                style={{ width: '100%', height: '100%' }}
+
+            />
+
+
+
+<h1>Left leg activity</h1>
+      <Plot data={[
+                    {
+                        x: xDat,
+                        y: y3,
+                        type: 'scatter',
+                        mode: 'lines+markers',
+                        marker: {color: 'rgb(99, 102, 241)', size: 4},
+                    }]}
+                layout={{
+                    autosize: true,
+                    xaxis: {
+                        title: 'Date',
+                        tickmode: "array",
+                        //tickVals: timeVals,
+                        //tick0: 30*365*24*3600*1000,
+                        range: [new Date().getTime()-12*3600*1000,new Date().getTime()+12*3600*1000],
+                        titlefont: {
+                            family: 'Inter, sans-serif',
+                            size: 18,
+                            color: 'black',
+                    }},
+                    yaxis: {
+                        title: 'Number of Hours',
+                        range: [0,Math.max(goal, ...y3)*1.1],
+                        titlefont: {
+                        family: 'Inter, sans-serif',
+                        size: 18,
+                        color: 'black'
+                    }},
+                    shapes: [
+                        {
+                            type: 'rect',
+                            x0: 0,
+                            y0: goal,
+                            x1: xDat.length,
+                            y1: Math.max(goal, ...y3)*1.1,
+                            fillcolor: 'green',
+                            opacity: 0.1,
+                            line: {width: 0}
+                        },
+                        {
+                            type: 'line',
+                            x0: 0,
+                            y0: goal,
+                            x1: xDat.length,
+                            y1: goal,
+                            line: {
+                                color: 'green',
+                                width: 0.5
+                            }
+                        }
+                    ]
+
+                }}
+                useResizeHandler
+                style={{ width: '100%', height: '100%' }}
+
+            />
+
+<h1>Right leg activity</h1>
+            <Plot data={[
+                    {
+                        x: xDat,
+                        y: y4,
+                        type: 'scatter',
+                        mode: 'lines+markers',
+                        marker: {color: 'rgb(99, 102, 241)', size: 4},
+                    }]}
+                layout={{
+                    autosize: true,
+                    xaxis: {
+                        title: 'Date',
+                        tickmode: "array",
+                        //tickVals: timeVals,
+                        //tick0: 30*365*24*3600*1000,
+                        range: [new Date().getTime()-12*3600*1000,new Date().getTime()+12*3600*1000],
+                        titlefont: {
+                            family: 'Inter, sans-serif',
+                            size: 18,
+                            color: 'black',
+                    }},
+                    yaxis: {
+                        title: 'Number of Hours',
+                        range: [0,Math.max(goal, ...y4)*1.1],
+                        titlefont: {
+                        family: 'Inter, sans-serif',
+                        size: 18,
+                        color: 'black'
+                    }},
+                    shapes: [
+                        {
+                            type: 'rect',
+                            x0: 0,
+                            y0: goal,
+                            x1: xDat.length,
+                            y1: Math.max(goal, ...y4)*1.1,
                             fillcolor: 'green',
                             opacity: 0.1,
                             line: {width: 0}
