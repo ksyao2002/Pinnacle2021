@@ -105,7 +105,7 @@ var dateTime = date+' '+time;
                             color: 'black',
                     }},
                     yaxis: {
-                        title: 'Number of Hours',
+                        title: 'Activity',
                         range: [0,Math.max(goal, ...y1)*1.1],
                         titlefont: {
                         family: 'Inter, sans-serif',
@@ -165,7 +165,7 @@ var dateTime = date+' '+time;
                             color: 'black',
                     }},
                     yaxis: {
-                        title: 'Number of Hours',
+                        title: 'Activity',
                         range: [0,Math.max(goal, ...y2)*1.1],
                         titlefont: {
                         family: 'Inter, sans-serif',
@@ -227,7 +227,7 @@ var dateTime = date+' '+time;
                             color: 'black',
                     }},
                     yaxis: {
-                        title: 'Number of Hours',
+                        title: 'Activity',
                         range: [0,Math.max(goal, ...y3)*1.1],
                         titlefont: {
                         family: 'Inter, sans-serif',
@@ -287,7 +287,7 @@ var dateTime = date+' '+time;
                             color: 'black',
                     }},
                     yaxis: {
-                        title: 'Number of Hours',
+                        title: 'Activity',
                         range: [0,Math.max(goal, ...y4)*1.1],
                         titlefont: {
                         family: 'Inter, sans-serif',

@@ -128,7 +128,7 @@ console.log(test);
     }
   }, [recordedChunks]);
 
-  
+
 
   function onResults(results) {
     // const video = webcamRef.current.video;
@@ -187,7 +187,12 @@ console.log(test);
     ) {
       camera = new cam.Camera(webcamRef.current.video, {
         onFrame: async () => {
-          await pose.send({ image: webcamRef.current.video });
+          try{
+            await pose.send({ image: webcamRef.current.video });
+          }
+          catch(err) {
+            console.log("Shit happens ",err);
+          }
         },
         width: 640,
         height: 480,
