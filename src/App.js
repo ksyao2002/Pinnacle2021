@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar';
+import Home from './pages/home';
 import Record from './pages/record';
 import View from './pages/view';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -8,6 +9,7 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
+        <Route path='/' component={Home} />
         <Route path='/record' component={Record} />
         <Route path='/view' component={View} />
       </Switch>
