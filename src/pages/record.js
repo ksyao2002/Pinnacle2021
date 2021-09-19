@@ -128,6 +128,8 @@ console.log(test);
     }
   }, [recordedChunks]);
 
+  
+
   function onResults(results) {
     // const video = webcamRef.current.video;
     const videoWidth = webcamRef.current.video.videoWidth;

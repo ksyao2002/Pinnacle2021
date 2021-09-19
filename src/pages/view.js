@@ -13,7 +13,7 @@ const timeVals = [
   "00:12:00", "00:13:00", "00:14:00", "00:15:00", "00:16:00", "00:17:00", "00:18:00", "00:19:00", "00:20:00", "00:21:00", "00:22:00", "00:23:00",
 ]
 
-  const [goal,setGoal] = useState(500);
+  const [goal,setGoal] = useState(50);
   const [xDat,setXDat] = useState([]);
   const [y1,setY1] = useState([]);
   const [y2,setY2] = useState([]);
@@ -28,17 +28,25 @@ const timeVals = [
     timeVals[i] = currDay + ' '+timeVals[i];
   }
 
+  function Comparator(a, b) {
+    if (a[0] < b[0]) return -1;
+    if (a[0] > b[0]) return 1;
+    return 0;
+  }
+
   function getUsers(){
     setLoading(true);
     ref.onSnapshot((querySnapshot)=>{
-      const items= [];
+      var items= [];
       const xtmp = [];
       const yLArm = [];
       const yRArm = [];
       const yLLeg = [];
       const yRLeg = [];
+      //const rawtime = [];
       querySnapshot.forEach((doc)=>{
-        items.push(doc.data());
+        //items.push(doc.data());
+        //rawtime.push(doc.data().Time.seconds);
         var today = new Date(doc.data().Time.seconds*1000);
         var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -49,17 +57,19 @@ var dateTime = date+' '+time;
         yRArm.push(doc.data().RArm);
         yLLeg.push(doc.data().LLeg);
         yRLeg.push(doc.data().RLeg);
-        
+        items.push([doc.data().Time.seconds,dateTime,doc.data().LArm,doc.data().RArm,doc.data().LLeg,doc.data().RLeg]);
       })
+      items = items.sort(Comparator);
       setUserlist(items);
-      setXDat(xtmp);
-      setY1(yLArm);
-      setY2(yRArm);
-      setY3(yLLeg);
-      setY4(yRLeg);
+      setXDat(items.map(function(value,index) { return value[1]; }));
+      setY1(items.map(function(value,index) { return value[2]; }));
+      setY2(items.map(function(value,index) { return value[3]; }));
+      setY3(items.map(function(value,index) { return value[4]; }));
+      setY4(items.map(function(value,index) { return value[5]; }));
       console.log(items);
       
     })
+
     setLoading(false);
   }
 
