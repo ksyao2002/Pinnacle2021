@@ -1,3 +1,5 @@
+#IMPORTANT! TO RUN ON LOCAL COMPUTER, CREATE .env file in /src with the api keys given to you by kevin.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
