@@ -233,6 +233,12 @@ console.log(test);
     <center>
       {capturing ? (
         <button onClick={handleStopCaptureClick} style={{
+          backgroundColor: "#F66666",
+          color: "white",
+          fontFamily: "Montserrat",
+          fontWeight: "bold",
+          border: "none",
+          borderRadius: 10,
           position: "absolute",
           marginLeft: "auto",
           marginRight: "auto",
@@ -247,6 +253,12 @@ console.log(test);
         }}>Stop Capture</button>
       ) : (
         <button onClick={handleStartCaptureClick} style={{
+          backgroundColor: "#5C62FA",
+          color: "white",
+          fontFamily: "Montserrat",
+          fontWeight: "bold",
+          border: "none",
+          borderRadius: 10,
           position: "absolute",
           marginLeft: "auto",
           marginRight: "auto",
