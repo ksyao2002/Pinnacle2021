@@ -4,7 +4,7 @@ import Plot from 'react-plotly.js';
 //import { getFirestore } from 'firebase/firestore/lite';
 import {db} from "../init-firebase";
 //import { collection, doc, setDoc } from "firebase/firestore"; 
-
+import background from "../images/background.png";
 
 const View = () => {
   const currDay = '2021-09-18'
@@ -13,7 +13,7 @@ const timeVals = [
   "00:12:00", "00:13:00", "00:14:00", "00:15:00", "00:16:00", "00:17:00", "00:18:00", "00:19:00", "00:20:00", "00:21:00", "00:22:00", "00:23:00",
 ]
 
-  const [goal,setGoal] = useState(50);
+  const [goal,setGoal] = useState(0);
   const [xDat,setXDat] = useState([]);
   const [y1,setY1] = useState([]);
   const [y2,setY2] = useState([]);
@@ -66,7 +66,9 @@ var dateTime = date+' '+time;
       setY2(items.map(function(value,index) { return value[3]; }));
       setY3(items.map(function(value,index) { return value[4]; }));
       setY4(items.map(function(value,index) { return value[5]; }));
-      console.log(items);
+      console.log('items: ',items);
+      console.log('xdat: ',xDat);
+      console.log('y1: ',y1);
       
     })
 
@@ -79,10 +81,17 @@ var dateTime = date+' '+time;
   if(loading){
     return <h1>Loading...</h1>;
   }
-  console.log(new Date().getTime()-3600000);
+  var sectionStyle = {
+    flex: 1,
+    width: '100%',
+    height: '800px',
+    resizeMode: 'contain',
+    backgroundImage: `url(${background})`
+  };
   return (
     <div>
-      <h1>Left arm activity</h1>
+      <div>
+      <h1>Right arm activity</h1>
       <Plot data={[
                     {
                         x: xDat,
@@ -142,7 +151,7 @@ var dateTime = date+' '+time;
 
             />
 
-<h1>Right arm activity</h1>
+<h1>Left arm activity</h1>
             <Plot data={[
                     {
                         x: xDat,
@@ -204,7 +213,7 @@ var dateTime = date+' '+time;
 
 
 
-<h1>Left leg activity</h1>
+<h1>Right leg activity</h1>
       <Plot data={[
                     {
                         x: xDat,
@@ -264,7 +273,7 @@ var dateTime = date+' '+time;
 
             />
 
-<h1>Right leg activity</h1>
+<h1>Left leg activity</h1>
             <Plot data={[
                     {
                         x: xDat,
@@ -323,6 +332,7 @@ var dateTime = date+' '+time;
                 style={{ width: '100%', height: '100%' }}
 
             />
+            </div>
     </div>
   );
 };

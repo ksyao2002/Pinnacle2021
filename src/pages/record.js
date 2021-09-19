@@ -13,6 +13,8 @@ import {db} from "../init-firebase";
 import firebase from 'firebase/app'
 //import { collection, doc, setDoc } from "firebase/firestore"; 
 
+import background from "../images/background.png";
+
 
 
 function Record() {
@@ -82,7 +84,7 @@ function Record() {
         }
         let back = movavg[i-1][j];
         let front = movavg[i+1][j];
-        if(back.visibility>0.99&&front.visibility>0.99){
+        if(back.visibility>0.5&&front.visibility>0.5){
           vel[j] += Math.sqrt(Math.pow(front.x-back.x,2)+ Math.pow(front.y - back.y,2)+ Math.pow(front.z - back.z,2));
         }
       }
@@ -200,8 +202,17 @@ console.log(test);
       camera.start();
     }
   }, []);
+
+  var sectionStyle = {
+    flex: 1,
+    width: '100%',
+    height: '800px',
+    resizeMode: 'contain',
+    backgroundImage: `url(${background})`
+  };
+
   return (
-    <div>
+    <div style={sectionStyle}>
     <center>
       <div className="App">
         <Webcam
