@@ -251,7 +251,7 @@ console.log(test);
           marginRight: "auto",
           left: 0,
           right: 0,
-          top:500,
+          top:600,
 
           textAlign: "center",
           zindex: 9,
@@ -271,28 +271,13 @@ console.log(test);
           marginRight: "auto",
           left: 0,
           right: 0,
-          top:500,
+          top:600,
           
           textAlign: "center",
           zindex: 9,
           width: 300,
           height: 50,
         }}>Start Capture</button>
-      )}
-      {recordedChunks.length > 0 && (
-        <button onClick={handleDownload} style={{
-          position: "absolute",
-          marginLeft: "auto",
-          marginRight: "auto",
-          left: 0,
-          right: 0,
-          top:560,
-          
-          textAlign: "center",
-          zindex: 9,
-          width: 300,
-          height: 50,
-        }}>Download</button>
       )}
     </center>
     </div>
