@@ -4,7 +4,7 @@ import React, {useState,useEffect} from 'react';
 const Home = () => {
   return (
     <div>
-      <h1>hi</h1>
+      <img src="whale.png" width="30%" height="30%"></img>
     </div>
   );
 };
